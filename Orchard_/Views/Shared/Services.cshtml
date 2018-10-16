@@ -1,0 +1,21 @@
+﻿@model string
+@inject OrchardCore.IOrchardHelper Orchard;
+@{
+    var services = await Orchard.GetContentItemByAliasAsync(Model);
+}
+<div class="row">
+    @foreach (var item in services.Content.BagPart.ContentItems)
+    {
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">@item.DisplayText</h4>
+                <div class="card-body">
+                    <p class="card-text">@Html.Raw(item.HtmlBodyPart.Html)</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

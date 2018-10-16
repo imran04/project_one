@@ -1,0 +1,12 @@
+﻿@page
+@inject OrchardCore.IOrchardHelper Orchard;
+
+@{
+    ViewData["Title"] = "index";
+}
+@section Header{
+    @await Html.PartialAsync("_Header", "alias:main")
+}
+<h2>Our Services</h2>
+@await Html.PartialAsync("Services", "alias:services")
+

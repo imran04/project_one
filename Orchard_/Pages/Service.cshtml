@@ -1,0 +1,16 @@
+﻿@page
+@inject OrchardCore.IOrchardHelper Orchard;
+@{
+    ViewData["Title"] = "Service";
+    var services = await Orchard.GetContentItemByAliasAsync("alias:services");
+}
+
+@if (services.Content.Services.Banner.Paths[0] != null)
+{
+<img class="img-fluid rounded mb-4" src="@Orchard.AssetUrl((string)services.Content.Services.Banner.Paths[0])" alt="">
+}
+
+@await Html.PartialAsync("Services", "alias:services")
+
+
+
